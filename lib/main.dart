@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_s24/detail.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'dart:math' as math;
@@ -26,10 +27,40 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      bottomNavigationBar: Material(
+        color: Colors.white,
+        child: TabBar(
+          indicatorColor: Colors.transparent,
+          controller: _tabController,
+          tabs: [
+            Tab(icon: Icon(Icons.more, color: Colors.grey, size: 22)),
+            Tab(icon: Icon(Icons.play_arrow, color: Colors.grey, size: 22)),
+            Tab(icon: Icon(Icons.navigation, color: Colors.grey, size: 16)),
+            Tab(icon: Icon(Icons.supervised_user_circle, color: Colors.grey, size: 22)),
+          ],
+        ),
+      ),
+
       appBar: AppBar(
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.camera_alt_outlined, color: Colors.grey)),
@@ -109,32 +140,56 @@ class _MainPageState extends State<MainPage> {
 
                     Row(
                       children: [
-                        Container(
-                          height: 230,
-                          width: (MediaQuery.of(context).size.width - 50) / 2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(image: AssetImage('assets/modelgrid1.jpeg'), fit: BoxFit.cover),
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Detail(imgPath:'assets/modelgrid1.jpeg')));
+                          },
+                          child: Hero(
+                            tag: 'assets/modelgrid1.jpeg',
+                            child: Container(
+                              height: 230,
+                              width: (MediaQuery.of(context).size.width - 50) / 2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(image: AssetImage('assets/modelgrid1.jpeg'), fit: BoxFit.cover),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(width: 10),
                         Column(
                           children: [
-                            Container(
-                              height: 110,
-                              width: (MediaQuery.of(context).size.width - 100) / 2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(image: AssetImage('assets/modelgrid2.jpeg'), fit: BoxFit.cover),
+                            InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Detail(imgPath:'assets/modelgrid2.jpeg')));
+                              },
+                              child: Hero(
+                                tag: 'assets/modelgrid2.jpeg',
+                                child: Container(
+                                  height: 110,
+                                  width: (MediaQuery.of(context).size.width - 100) / 2,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(image: AssetImage('assets/modelgrid2.jpeg'), fit: BoxFit.cover),
+                                  ),
+                                ),
                               ),
                             ),
                             SizedBox(height: 10),
-                            Container(
-                              height: 110,
-                              width: (MediaQuery.of(context).size.width - 100) / 2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                image: DecorationImage(image: AssetImage('assets/modelgrid3.jpeg'), fit: BoxFit.cover),
+                            InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Detail(imgPath:'assets/modelgrid3.jpeg')));
+                              },
+                              child: Hero(
+                                tag: 'assets/modelgrid3.jpeg',
+                                child: Container(
+                                  height: 110,
+                                  width: (MediaQuery.of(context).size.width - 100) / 2,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(image: AssetImage('assets/modelgrid3.jpeg'), fit: BoxFit.cover),
+                                  ),
+                                ),
                               ),
                             ),
                           ],
