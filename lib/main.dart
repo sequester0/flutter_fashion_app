@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'dart:math' as math;
+
 void main() => runApp(const FashionApp());
 
 class FashionApp extends StatelessWidget {
@@ -70,9 +72,9 @@ class _MainPageState extends State<MainPage> {
             child: Material(
               elevation: 4,
               borderRadius: BorderRadius.circular(16),
-              color: Colors.red,
+              //color: Colors.red,
               child: Container(
-                height: 450,
+                height: 500,
                 width: double.infinity,
                 padding: EdgeInsets.all(16),
                 child: Column(
@@ -93,6 +95,110 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         IconButton(onPressed: (){}, icon: Icon(Icons.more_vert, color: Colors.grey)),
+                      ],
+                    ),
+
+                    SizedBox(height: 15),
+
+                    Text(
+                      'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends.',
+                      style: GoogleFonts.montserrat(fontSize: 12, color: Colors.grey),
+                    ),
+
+                    SizedBox(height: 15),
+
+                    Row(
+                      children: [
+                        Container(
+                          height: 230,
+                          width: (MediaQuery.of(context).size.width - 50) / 2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(image: AssetImage('assets/modelgrid1.jpeg'), fit: BoxFit.cover),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          children: [
+                            Container(
+                              height: 110,
+                              width: (MediaQuery.of(context).size.width - 100) / 2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(image: AssetImage('assets/modelgrid2.jpeg'), fit: BoxFit.cover),
+                              ),
+                            ),
+                            SizedBox(height: 10),
+                            Container(
+                              height: 110,
+                              width: (MediaQuery.of(context).size.width - 100) / 2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(image: AssetImage('assets/modelgrid3.jpeg'), fit: BoxFit.cover),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          height: 25,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.grey.withOpacity(0.3),
+                          ),
+                          child: Text('# Louis vuitton', style: GoogleFonts.montserrat(fontSize: 10, color: Colors.black.withOpacity(0.5)),),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          alignment: Alignment.center,
+                          height: 25,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.grey.withOpacity(0.3),
+                          ),
+                          child: Text('# Chloe', style: GoogleFonts.montserrat(fontSize: 10, color: Colors.black.withOpacity(0.5)),),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Divider(),
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Transform(
+                          alignment: Alignment.center,
+                          transform: Matrix4.rotationY(math.pi),
+                          child: Icon(Icons.reply, color: Colors.grey),
+                        ),
+                        SizedBox(width: 10),
+                        Text('1.7k', style: GoogleFonts.montserrat(color: Colors.grey)),
+
+                        SizedBox(width: 25),
+
+                        Icon(Icons.comment, color: Colors.grey),
+                        SizedBox(width: 10),
+                        Text('325', style: GoogleFonts.montserrat(color: Colors.grey)),
+
+                        SizedBox(width: 25),
+
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width - 232,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(Icons.favorite, color: Colors.red),
+                              SizedBox(width: 5),
+                              Text('2.3k', style: GoogleFonts.montserrat(color: Colors.grey)),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ],
